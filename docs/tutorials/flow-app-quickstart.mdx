@@ -437,14 +437,14 @@ const executeTransaction = async () => {
         }
       }
     `,
-    args: (arg, t) => [arg("Flow Developer", t.String)],
+    args: (arg, t) => [arg("Flow Developer!", t.String)],
     payer: fcl.authz,
     proposer: fcl.authz,
     authorizations: [fcl.authz],
     limit: 50
   })
 
-  fcl.tx(transactionId).subscribe()
+  fcl.tx(transactionId).subscribe(res => setTransactionStatus(res.status))
 }
 ```
 
